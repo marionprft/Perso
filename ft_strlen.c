@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 17:46:10 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/21 17:44:21 by mapointi         ###   ########.fr       */
+/*   Created: 2026/04/21 17:29:06 by mapointi          #+#    #+#             */
+/*   Updated: 2026/04/21 18:34:48 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include<string.h>
 
-int	ft_isalnum(int c)
+size_t  ft_strlen(const char *src)
 {
-	if (ft_isdigit(c) == 1 || ft_isalpha(c) == 1)
-		return (1);
-	else
-		return (0);
+    size_t i;
+
+    i = 0;
+    while (src)
+        i++;
+    return (i - 1);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 #include <ctype.h>
+
 int main(void)
 {
     printf("Moi\n");
-    printf("%d\n", ft_isalnum('k'));
-    printf("%d\n", ft_isalnum('9'));
-    printf("%d\n", ft_isalnum(37));
-    printf("%d\n", ft_isalnum(102));
+    printf("%u\n", ft_strlen("bonjour toi"));
+    printf("%u\n", ft_strlen(" "));
+    printf("%u\n", ft_strlen("0]?"));
 
     printf("OG\n");
-    printf("%d\n", isalnum('k'));
-    printf("%d\n", isalnum('9'));
-    printf("%d\n", isalnum(37));
-    printf("%d\n", isalnum(102));
-    
+    printf("%u\n", strlen("bonjour toi"));
+    printf("%u\n", strlen(" "));
+    printf("%u\n", strlen("0]?"));
+
     return (0);
-}*/
+}
