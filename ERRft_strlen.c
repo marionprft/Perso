@@ -20,7 +20,7 @@ size_t  ft_strlen(const char *src)
     i = 0;
     while (src)
         i++;
-    return (i - 1);
+    return (i);
 }
 
 #include <stdio.h>
@@ -29,14 +29,14 @@ size_t  ft_strlen(const char *src)
 int main(void)
 {
     printf("Moi\n");
-    printf("%u\n", ft_strlen("bonjour toi"));
-    printf("%u\n", ft_strlen(" "));
-    printf("%u\n", ft_strlen("0]?"));
+    printf("%zu\n", ft_strlen("bonjour toi"));
+    printf("%zu\n", ft_strlen(" "));
+    printf("%zu\n", ft_strlen("0]?"));
 
     printf("OG\n");
-    printf("%u\n", strlen("bonjour toi"));
-    printf("%u\n", strlen(" "));
-    printf("%u\n", strlen("0]?"));
+    printf("%lu\n", strlen("bonjour toi"));
+    printf("%lu\n", strlen(" "));
+    printf("%lu\n", strlen("0]?"));
 
     return (0);
 }
