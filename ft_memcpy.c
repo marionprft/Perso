@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:46:10 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/21 17:44:21 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/04/24 17:36:38 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void *ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void *ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < n)
 	{	
-		dst[i] = src[i];
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
 
+	return (dst);
 }
 
 #include<stdio.h>
 
 int main(void)
 {
-	void	*restrict dst;
-	const void	*restrict src;
-	size_t	n;
+	char	dst[12]; //impossible avec dst[] < src[]
+	char *src = "8morts6blesses";
+	size_t	n = 8;
 
-	//src[9] = "jusdeaux";
-	n = 3;
-	printf("Moi :\n");
-	printf("%s\n", ft_memcpy(dst[n], "forsure", n));
+	printf("Mon memcpy :\n");
+	printf("%s\n", (unsigned char *)ft_memcpy(dst, src, n));
 
+	printf("\nOG :\n");
+	printf("%s\n", (unsigned char *)memcpy(dst, src, n));
+	
 	return (0);
 }
