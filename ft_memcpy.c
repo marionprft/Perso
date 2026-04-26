@@ -6,11 +6,11 @@
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:46:10 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/24 17:36:38 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/04/26 20:04:02 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+//#include <string.h>
 
 void *ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -27,7 +27,7 @@ void *ft_memcpy(void *dst, const void *src, size_t n)
 }
 
 #include<stdio.h>
-
+/*
 int main(void)
 {
 	char	dst[12]; //impossible avec dst[] < src[]
@@ -41,4 +41,4 @@ int main(void)
 	printf("%s\n", (unsigned char *)memcpy(dst, src, n));
 	
 	return (0);
-}
+}*/

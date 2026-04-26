@@ -6,12 +6,16 @@
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:26:50 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/24 12:31:05 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/04/26 23:16:34 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+#include <stddef.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdio.h>
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);

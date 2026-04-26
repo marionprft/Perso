@@ -1,42 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 17:29:06 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/26 23:20:14 by mapointi         ###   ########.fr       */
+/*   Created: 2026/04/26 23:04:04 by mapointi          #+#    #+#             */
+/*   Updated: 2026/04/26 23:26:57 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-size_t  ft_strlen(const char *src)
+char    *ft_strchr(const char *s, int c)
 {
-    size_t i;
+    int i;
+    char    *str;
 
     i = 0;
-    while (src[i])
-        i++;
-    return (i);
+    while (s[i])
+    {
+        if (s[i] = c)
+        {
+            str = s;
+            return (str);
+        else
+            i++;
+    } 
+
 }
-
-/*#include <stdio.h>
-#include <ctype.h>
-
 int main(void)
 {
-    printf("Moi\n");
-    printf("%ld\n", ft_strlen("aa"));
-    printf("%ld\n", ft_strlen(" "));
-    printf("%ld\n", ft_strlen("0]?"));
+    int c = 78;
+    char s[] = "nsopgivnw[peg;sbWEFB]"
+    int i = 0;
 
-    printf("OG\n");
-    printf("%ld\n", strlen("bonjour bonjour"));
-    printf("%ld\n", strlen(" "));
-    printf("%ld\n", strlen("0]?"));
-
-    return (0);  
-}*/
+    char *str = ft_strchr(s, c);
+    printf("Mon strchr :\n");
+    while (i <= ft_strlen(s))
+    {
+        printf("%s\n", str);
+    }
+    
+}

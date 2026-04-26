@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 17:29:06 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/26 23:20:14 by mapointi         ###   ########.fr       */
+/*   Created: 2026/04/26 18:59:40 by mapointi          #+#    #+#             */
+/*   Updated: 2026/04/26 20:00:26 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <string.h>
+#include "libft.h"
 
-size_t  ft_strlen(const char *src)
+size_t  ft_strlcpy(char *dst, const char *src, size_t size)
 {
     size_t i;
 
     i = 0;
-    while (src[i])
+    while (i < size - 1)
+    {
+        dst[i] = src[i];
         i++;
-    return (i);
+    }
+    dst[i] = 0;
+
+    return (ft_strlen(src));
 }
 
-/*#include <stdio.h>
-#include <ctype.h>
+#include<stdio.h>
 
+#define SIZE 5
 int main(void)
 {
-    printf("Moi\n");
-    printf("%ld\n", ft_strlen("aa"));
-    printf("%ld\n", ft_strlen(" "));
-    printf("%ld\n", ft_strlen("0]?"));
+    char dst[SIZE];
+    char *src = "hello";
+    
+    printf("Mon strlcpy\n");
+    ft_strlcpy(dst, src, SIZE);
+    printf("%s\n", dst);
 
-    printf("OG\n");
-    printf("%ld\n", strlen("bonjour bonjour"));
-    printf("%ld\n", strlen(" "));
-    printf("%ld\n", strlen("0]?"));
-
-    return (0);  
-}*/
+    printf("\nOG\n");
+    strlcpy(dst, src, SIZE);
+    printf("%s\n", dst);
+}
