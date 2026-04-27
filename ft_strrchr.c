@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/26 23:04:04 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/27 20:24:04 by mapointi         ###   ########.fr       */
+/*   Created: 2026/04/27 19:38:18 by mapointi          #+#    #+#             */
+/*   Updated: 2026/04/27 20:24:46 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strchr(const char *s, int c)
+char    *ft_strrchr(const char *s, int c)
 {
     int i;
-    //char scpy[] = "";
 
-    i = 0;
-    while (s[i])
+    i = ft_strlen(s) - 1;
+    while (i >= 0)
     {
         if (s[i] == c)
         {
-            return ((char *)&(s[i]));
-            //retourne tout a partir de s[i=c]
+            return ((char *)(&s[i]));
         }
-        //else
-        i++;
+        i--;
     }
-    return (NULL); 
+        return (NULL);
 }
+
 int main(void)
 {
-    int c = 'p';
-    char s[] = "nsopgivnw[peg;sbWEFB]";
+    char *s = "coucou les musulmans, moi je mange la GLAAACEuh";
+    int c = 's';
 
-    printf("Mon strchr :\n");
-    printf("%s\n", ft_strchr(s, c));
-    
-    char s1[] = "nsopgivnw[peg;sbWEFB]";
+    printf("Mon strrchr :\n");
+    printf("%s\n", ft_strrchr(s, c));
+
     printf("\nOG :\n");
-    printf("%s\n", strchr(s1, c));
-
+    printf("%s\n", strrchr(s, c));
 }
