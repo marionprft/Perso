@@ -6,7 +6,7 @@
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 21:10:31 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/27 21:52:43 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/04/29 10:42:49 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 void    *ft_memchr(const void *s, int c, size_t n)
 {
     size_t i;
-
-    const char* mem = (char*) s;
+    char * mem;
+    
+    mem = (char *) s;
     i = 0;
     while (i < n)
     {
         if (mem[i] == c)
-            return (s);
+        {
+            return (mem + i);
+            // on retourne tout a partir de l`adresse en i.
+        }        
         i++;
     }
     return (NULL);
@@ -29,17 +33,17 @@ void    *ft_memchr(const void *s, int c, size_t n)
 
 int main(void)
 {
-    char *s = "techno, toujours pareil, boom boom dans les oreilles";
+    const char s[] = "techno, toujours pareil, boom boom dans les oreilles";
     int c = 'm';
     size_t n = 30;
 
     printf("Mon memchr :\n");
-    printf("%s\n", ft_memchr(s, c, n));
+    printf("%s\n", (char *)ft_memchr(s, c, n));
 
-    char *s = "techno, toujours pareil, boom boom dans les oreilles";
-    int c = 'm';
-    size_t n = 30;
+    const char ss[] = "techno, toujours pareil, boom boom dans les oreilles";
+    int cc = 'm';
+    size_t nn = 30;
 
     printf("\nOG :\n");
-    printf("%s\n", memchr(s, c, n));
+    printf("%s\n", (char *)memchr(ss, cc, nn));
 }
