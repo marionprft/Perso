@@ -6,11 +6,34 @@
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:15:05 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/30 11:53:37 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/04/30 22:53:39 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+// char    *ft_strnstr(const char *big, const char* little, size_t len)
+// {
+//     size_t  i;
+//     size_t  j;
+
+//     i = 0;
+//     if (!big || !little)
+//         return (NULL);
+//     if((char)little[0] == 0)
+//             return ((char *)big);
+    
+//     while(i < len && big[i])
+//     {   
+//         j = 0;
+//         i++;
+        
+//         if (ft_strncmp(&big[i], little, ft_strlen(little)) == 0 && len - i >= ft_strlen(little))
+//                 return ((char * ) big + i);
+             
+//     }     
+//     return (NULL);
+// }
 
 char    *ft_strnstr(const char *big, const char* little, size_t len)
 {
@@ -18,22 +41,25 @@ char    *ft_strnstr(const char *big, const char* little, size_t len)
     size_t  j;
 
     i = 0;
+    if(little[0] == 0)    
+            return ((char *)big);
     while(i < len && big[i])
     {   
-        if(little[j] == 0)    
-            return ((char *)big);
         j = 0;
+        
         while(little[j] == big[i + j] && big[i + j] && (i + j) < len)
         {      
             j++;
-        }     
-    } 
-        if((char)little[0] == 0)
-            return ((char *)big);
+            if (little[j]) //strlen
+              return ((char *)big + i);
+        }  
+        i++;   
+    }
         
     return (NULL);
 }
-int main(void)
+
+int main() 
 {
     char big[] = "j'ai faim d'un burger!!";
     char la[] = "faim";
@@ -41,14 +67,15 @@ int main(void)
     char pas_laa[] = "";
     char *pas_laaa = 0;
 
+    //char result[] = ft_strnstr(big, la, 50);
     
     printf("Mon strnstr :\n");
-    printf("%s\n",  ft_strnstr(big, la, 5));
+    printf("%s\n",  ft_strnstr(big, la, 50));
     printf("%s\n",  ft_strnstr(big, pas_la, 5));
     printf("%s\n",  ft_strnstr(big, pas_la, 18));
     printf("%s\n",  ft_strnstr(big, pas_laa, 5));
     printf("%s\n",  ft_strnstr(big, pas_laaa, 5));
-
+    
     /*printf("\nOG :\n");
     printf("%s\n",  strnstr(big, la, 5));
     printf("%s\n",  strnstr(big, pas_la, 5));
