@@ -41,18 +41,19 @@ char    *ft_strnstr(const char *big, const char* little, size_t len)
     size_t  j;
 
     i = 0;
+    if(little == NULL)
+        return (NULL);
     if(little[0] == 0)    
             return ((char *)big);
     while(i < len && big[i])
     {   
         j = 0;
-        
         while(little[j] == big[i + j] && big[i + j] && (i + j) < len)
         {      
             j++;
-            if (little[j]) //strlen
-              return ((char *)big + i);
         }  
+        if (little[j] == 0)
+            return ((char *)big + i);
         i++;   
     }
         
@@ -67,19 +68,20 @@ int main()
     char pas_laa[] = "";
     char *pas_laaa = 0;
 
-    //char result[] = ft_strnstr(big, la, 50);
     
     printf("Mon strnstr :\n");
-    printf("%s\n",  ft_strnstr(big, la, 50));
+    printf("%s\n",  ft_strnstr(big, la, 15));
+    printf("%s\n",  ft_strnstr(big, la, 7));
     printf("%s\n",  ft_strnstr(big, pas_la, 5));
     printf("%s\n",  ft_strnstr(big, pas_la, 18));
     printf("%s\n",  ft_strnstr(big, pas_laa, 5));
     printf("%s\n",  ft_strnstr(big, pas_laaa, 5));
     
-    /*printf("\nOG :\n");
-    printf("%s\n",  strnstr(big, la, 5));
+    printf("\nOG :\n");
+    printf("%s\n",  strnstr(big, la, 15));
+    printf("%s\n",  strnstr(big, la, 7));
     printf("%s\n",  strnstr(big, pas_la, 5));
     printf("%s\n",  strnstr(big, pas_la, 18));
     printf("%s\n",  strnstr(big, pas_laa, 5));
-    printf("%s\n",  strnstr(big, pas_laaa, 5));*/
+    printf("%s\n",  strnstr(big, pas_laaa, 5));
 }
