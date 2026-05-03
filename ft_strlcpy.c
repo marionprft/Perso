@@ -6,7 +6,7 @@
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 18:59:40 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/26 20:00:26 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/05/03 21:05:28 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t  ft_strlcpy(char *dst, const char *src, size_t size)
     return (ft_strlen(src));
 }
 
-#include<stdio.h>
+/*#include<stdio.h>
 
 #define SIZE 5
 int main(void)
@@ -43,4 +43,4 @@ int main(void)
     printf("\nOG\n");
     strlcpy(dst, src, SIZE);
     printf("%s\n", dst);
-}
+}*/

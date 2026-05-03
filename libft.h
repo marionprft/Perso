@@ -6,7 +6,7 @@
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:26:50 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/30 23:25:56 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/05/03 21:03:14 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ft_isprint(int c);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 
 size_t  ft_strlen(const char *src);
+size_t  ft_strlcpy(char* dst, const char* src, size_t size);
 
 void *ft_memset(void *b, int c, size_t n);
 void    ft_bzero(void *s, size_t n);

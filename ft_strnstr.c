@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HELPft_strnstr.c                                   :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapointi <mapointi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:15:05 by mapointi          #+#    #+#             */
-/*   Updated: 2026/04/30 22:53:39 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/05/03 23:06:30 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,28 @@ char    *ft_strnstr(const char *big, const char* little, size_t len)
     return (NULL);
 }
 
-int main() 
-{
-    char big[] = "j'ai faim d'un burger!!";
-    char la[] = "faim";
-    char pas_la[] = "moi aussi";
-    char pas_laa[] = "";
-    char *pas_laaa = 0;
+// int main() 
+// {
+//     char big[] = "j'ai faim d'un burger!!";
+//     char la[] = "faim";
+//     char pas_la[] = "moi aussi";
+//     char pas_laa[] = "";
+//     char *pas_laaa = 0;
 
     
-    printf("Mon strnstr :\n");
-    printf("%s\n",  ft_strnstr(big, la, 15));
-    printf("%s\n",  ft_strnstr(big, la, 7));
-    printf("%s\n",  ft_strnstr(big, pas_la, 5));
-    printf("%s\n",  ft_strnstr(big, pas_la, 18));
-    printf("%s\n",  ft_strnstr(big, pas_laa, 5));
-    printf("%s\n",  ft_strnstr(big, pas_laaa, 5));
+//     printf("Mon strnstr :\n");
+//     printf("%s\n",  ft_strnstr(big, la, 15));
+//     printf("%s\n",  ft_strnstr(big, la, 7));
+//     printf("%s\n",  ft_strnstr(big, pas_la, 5));
+//     printf("%s\n",  ft_strnstr(big, pas_la, 18));
+//     printf("%s\n",  ft_strnstr(big, pas_laa, 5));
+//     printf("%s\n",  ft_strnstr(big, pas_laaa, 5));
     
-    printf("\nOG :\n");
-    printf("%s\n",  strnstr(big, la, 15));
-    printf("%s\n",  strnstr(big, la, 7));
-    printf("%s\n",  strnstr(big, pas_la, 5));
-    printf("%s\n",  strnstr(big, pas_la, 18));
-    printf("%s\n",  strnstr(big, pas_laa, 5));
-    printf("%s\n",  strnstr(big, pas_laaa, 5));
-}
+//     printf("\nOG :\n");
+//     printf("%s\n",  strnstr(big, la, 15));
+//     printf("%s\n",  strnstr(big, la, 7));
+//     printf("%s\n",  strnstr(big, pas_la, 5));
+//     printf("%s\n",  strnstr(big, pas_la, 18));
+//     printf("%s\n",  strnstr(big, pas_laa, 5));
+//     printf("%s\n",  strnstr(big, pas_laaa, 5));
+// }
