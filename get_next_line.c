@@ -6,109 +6,79 @@
 /*   By: mapointi <mapointi@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:58:06 by mapointi          #+#    #+#             */
-/*   Updated: 2026/06/08 18:10:19 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/06/09 20:17:56 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // static datatype nom_var = valeur d'initialisation;
-
-#include <fcntl.h>
-#include <limits.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-
-
 
 // lire chaque buffer cree et reallocque jusqu'a trouver un \name
 
 // lire n bytes et les ecrire dans un buffer deja initialise d'au
 // moins n bytes. retourne le nombre m <= n lus.
 
-int	is_retour_ligne(int str, char c)
+#include "get_next_line.h"
+
+int	is_retour_ligne(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = 0;
-	while (str[i] != '\n')
+	while (str[i])
 	{
+		if (str[i] == '\n')
+			return (1);
 		i++;
-		if (c == '\n')
-			break ;
 	}
-	return (1);
-}
-
-char	*ft_buffer(int BUFFER_SIZE)
-{
-	buf = malloc(sizeof(char *) * BUFFER_SIZE);
-	if (!buf)
-		return (NULL);
-	return (buf);
-	free(buf);
-}
-
-char 	*strbuilding(char *str, char *buf)
-{
-	int i;
-	cahr
-
-	i = 0;
-	if (str == 0)
-		str = buf //pointeur = pointeur? syntaxe
+	return (0);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*buf;
-	int	n;
-	int		retour;
-	
-	buf = ft_buffer(int BUFFER_SIZE);
+	char buf[BUFFER_SIZE + 1];
+	int			n;
+	//int			i;
+	//static char	*temp;
+	char		*str;
 
-	while (buf[i] != '\n')
+	str = 0;
+	//i = 0;
+	while (is_retour_ligne(str) == 0)
 	{
 		n = read(fd, buf, BUFFER_SIZE);
-		i++;
+		buf[n] = 0;
+		str = strbuilding(str, buf);
+		// if (is_retour_ligne == 1)
+		// 	temp = ft_strdup(buf[i + 1]);
 	}
-	if (buf[i] == '\n')
-	{
-		residu = buf
-		write(1, "\n", 1)
-	
+	return (str);
 }
-
-int		main(void);
+int		main(void)
 {
-	char *str = "Hello world of hoomans";
-	size_t len = strlen(str);
-	int fd = open("text.txt", O_WRONLY | O_TRUNC | O_CREAT, 777);
-	if (fd == -1)
-		return (0);
-	write(fd, str, len);
-	get_next_line(int fd);
+	char *gnl;
+
+	int fd = open("text.txt", O_WRONLY | O_CREAT, 777);
+	if (fd < 0)
+		return (1);
+	gnl = get_next_line(fd);
+	printf("%s\n", gnl);
 	close(fd);
 }
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE
+// int main(void) // char *get_next_line(int fd)
+// {
+// 	int fd;
+// 	char *test;
+// 	size_t len;
 
-BUFFER_SIZE = 8;
-
-#endif
-
-int	main(void) // char *get_next_line(int fd)
-{
-	int		fd;
-	char	*test;
-	size_t	len;
-
-	test = "Hello\n";
-	len = strlen(test);
-	printf("Len test = %ld\n", len);
-	// read()
-	printf("fd = %d\n", fd);
-	write(fd, test, len);
-	close(fd);
-	return (0);
-}
+// 	test = "Hello\n";
+// 	len = strlen(test);
+// 	printf("Len test = %ld\n", len);
+// 	// read()
+// 	printf("fd = %d\n", fd);
+// 	write(fd, test, len);
+// 	close(fd);
+// 	return (0);
+// }
