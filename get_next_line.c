@@ -6,60 +6,65 @@
 /*   By: mapointi <mapointi@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 18:58:06 by mapointi          #+#    #+#             */
-/*   Updated: 2026/06/09 20:17:56 by mapointi         ###   ########.fr       */
+/*   Updated: 2026/06/10 20:37:16 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// static datatype nom_var = valeur d'initialisation;
-
-// lire chaque buffer cree et reallocque jusqu'a trouver un \name
-
-// lire n bytes et les ecrire dans un buffer deja initialise d'au
-// moins n bytes. retourne le nombre m <= n lus.
-
 #include "get_next_line.h"
 
-int	is_retour_ligne(char *str)
+char	*read_line(int fd, char *stash)
 {
-	int	i;
+	int	n;
+	char *buf;
 
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
+	n = 1;
+	while (n > 0 && is_return_line(stash) == 0)
 	{
-		if (str[i] == '\n')
-			return (1);
-		i++;
+		n = read(fd, buf, BUFFER_SIZE);
+		if (n == -1)
+		{
+			free(buf);
+			free(stash);
+			return (NULL);
+		}
+		else if (n == 0)
+			break ;
+		buf[n] = 0;
+		stash = strbuilding(stash, buf);
+		if (!stash)
+			return (NULL);
 	}
-	return (0);
+	return (stash);
+	printf("returned stash = %s\n", stash);
 }
 
 char	*get_next_line(int fd)
 {
-	char buf[BUFFER_SIZE + 1];
-	int			n;
-	//int			i;
-	//static char	*temp;
-	char		*str;
+	static char	*stash;
+	char *previous_stash;
+	int len;
 
-	str = 0;
-	//i = 0;
-	while (is_retour_ligne(str) == 0)
-	{
-		n = read(fd, buf, BUFFER_SIZE);
-		buf[n] = 0;
-		str = strbuilding(str, buf);
-		// if (is_retour_ligne == 1)
-		// 	temp = ft_strdup(buf[i + 1]);
-	}
-	return (str);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	previous_stash = read_line(fd, stash);
+	//printf("prev stash = %s\n", previous_stash);
+	len = ft_strlen(previous_stash);
+	//printf("len prev stash = %d\n", len);
+	stash = ft_strchr(stash, stash[len + 1]);
+	//printf("new stash = %s\n", stash);
+
+	return (previous_stash);
 }
-int		main(void)
-{
-	char *gnl;
 
-	int fd = open("text.txt", O_WRONLY | O_CREAT, 777);
+int	main(void)
+{
+	char	*gnl;
+	int		fd;
+
+	fd = open("text.txt", O_WRONLY | O_CREAT, 777);
 	if (fd < 0)
 		return (1);
 	gnl = get_next_line(fd);
