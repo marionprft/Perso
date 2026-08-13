@@ -5,169 +5,91 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mapointi <mapointi@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 15:48:09 by mapointi          #+#    #+#             */
-/*   Updated: 2026/06/10 20:25:16 by mapointi         ###   ########.fr       */
+/*   Created: 2026/06/16 15:00:29 by mapointi          #+#    #+#             */
+/*   Updated: 2026/08/08 22:11:46 by mapointi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "push_swap.h"
 
-// char	*ft_save(fd, char *buf)
-// {
-// 	char		c;
-// 	int			n;
-// 	int			i;
-// 	int			j;
-// 	static char	*temp;
-
-// 	i = 0;
-// 	j = 0;
-// 	n = read(fd, buf, BUFFER_SIZE);
-// 	temp = malloc(sizeof(char) * n);
-// 	c = '\n';
-// 	while (buf[i])
-// 	{
-// 		if (buf[i] == '\n')
-// 		{
-// 			i++;
-// 			temp[j] = buf[i];
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
-
-int	ft_strlen(char *str)
+int	ft_isdigit(char *str, int c)
 {
-	int	i;
-
-	if (!str)
+	if ((c >= '0' && c <= '9') || ft_veriflag(&str) == 1)
+		return (1);
+	else
 		return (0);
+}
+
+t_list	*ft_lstnew(long value)
+{
+	t_list	*newnode;
+
+	newnode = malloc(sizeof(t_list));
+	if (!newnode)
+		return (NULL);
+	newnode->value = value;
+	newnode->next = NULL;
+	newnode->rang = 0;	
+	return (newnode);
+}
+
+long	ft_lstsize(t_list *lst) // on prend en parametre le premier node
+							// de la liste chainee a parcourir.
+{
+	long i;
+
 	i = 0;
-	while (str[i] != 0)
+	if (lst == NULL)
+		return (0);
+	while (lst != 0)
 	{
+		lst = lst->next;
 		i++;
-		printf("%c\n", str[i]);
 	}
 	return (i);
 }
 
-int	is_return_line(char *str)
-{
-	int	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char	*strbuilding(char *str, char *buf)
+long	ft_atoi(const char *nptr)
 {
 	int		i;
-	int		j;
-	char	*strr;
+	long	res;
+	int		sign;
 
-	strr = 0;
 	i = 0;
-	if (!str)
+	res = 0;
+	sign = 1;
+	while ((nptr[i] > 8 && nptr[i] < 14) || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		str = malloc(sizeof(char) * 1);
-		if (!str)
-			return (NULL);
-		str[0] = 0;
-	}
-	strr = malloc(sizeof(char) * (ft_strlen(str) + ft_strlen(buf) + 1));
-	if (!strr)
-		return (NULL);
-	while (str[i])
-	{
-		strr[i] = str[i];
+		if (nptr[i] == '-')
+			sign = -1;
 		i++;
 	}
-	free(str);
-	j = 0;
-	while (buf[j])
+	while (nptr[i] != '\0' && nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		strr[i] = buf[j];
+		res = res * 10 + (nptr[i] - '0');
 		i++;
-		j++;
 	}
-	strr[i] = 0;
-	return (strr);
+	return (res * sign);
 }
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
+	t_list	*p;
 
-	i = 0;
-	while (s[i])
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&(s[i]));
-		i++;
+		*lst = new;
+		return ;
 	}
-	if (c == '\0')
-		return ((char *)s + i);
-	return (NULL);
+	p = *lst;
+	while (p->next != NULL)
+	{
+		p = p->next;
+	}
+	p->next = new;
 }
 
-char	*ft_substr(char *s, int start, size_t len)
-{
-	char			*sub;
-	unsigned int	i;
-
-	i = 0;
-	sub = (char *)malloc(sizeof(char) * (len + 1));
-	if (!sub)
-		return (NULL);
-	while (len-- && s[start])
-	{
-		if (start > ft_strlen(s))
-			break ;
-		sub[i] = s[start];
-		start++;
-		i++;
-	}
-	sub[i] = 0;
-	return (sub);
-}
-
-// char	*ft_end_of_file(char *buf)
-// {
-// 	int		n;
-// 	char	*str;
-
-// 	n = read(fd, buf, BUFFER_SIZE);
-// 	if (n != ft_strlen(buf))
-// 	{
-// 		while (buf[i])
-// 			str = malloc(sizeof(char) * (ft_strlen(buf) + 1));
-// 		str[i] = 0;
-// 	}
-// 	return (str);
-// }
-
-// int	main(void)
-// {
-// 	char *str;
-
-// 	str = 0;
-// 	// str = malloc(sizeof(char) * 4);
-// 	// str[0] = 's';
-// 	// str[1] = 'a';
-// 	// str[2] = 'l';
-// 	// str[3] = '\0';
-
-// 	str = strbuilding(str, "sal");
-// 	printf("%s\n", str);
-// 	str = strbuilding(str, "ute");
-// 	printf("%s\n", str);
-// }
