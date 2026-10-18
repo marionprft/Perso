@@ -35,7 +35,11 @@ re: fclean all
 
 # PROTECTION
 
+<<<<<<< HEAD
 .PHONY: all clean fclean re
 
 \\ on appelait pas utils.c et le makefile n'est pas bon 
 \\ ajouter un atoi aussi dans le fichier 
+=======
+.PHONY: all clean fclean re
+>>>>>>> de26f2275846daea362787021363c947bf126711
